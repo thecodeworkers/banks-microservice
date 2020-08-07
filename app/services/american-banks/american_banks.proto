@@ -1,0 +1,44 @@
+syntax = "proto2";
+
+message AmericanBankEmpty = {}
+
+message AmericanBankIdRequest {
+  required string id = 1;
+}
+
+message AmericanBankNotIdRequest {
+  required routing_number = 1;
+  required bank_name = 2;
+  required full_name = 3;
+  required swift = 4;
+  required number_account = 5;
+
+  enum Type {
+    saving = 0;
+    current = 1;
+  }
+
+  required Type type = 6;
+  required string currency = 7;  
+}
+
+message AmericanBankNotIdRequest {
+  required string id = 1; 
+  required routing_number = 2;
+  required bank_name = 3;
+  required full_name = 4;
+  required swift = 5;
+  required number_account = 6;
+
+  enum Type {
+    saving = 0;
+    current = 1;
+  }
+
+  required Type type = 6;
+  required string currency = 7;  
+}
+
+
+
+

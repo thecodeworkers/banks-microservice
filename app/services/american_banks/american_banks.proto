@@ -7,11 +7,11 @@ message AmericanBankIdRequest {
 }
 
 message AmericanBankNotIdRequest {
-  required string routing_number = 1;
-  required string bank_name = 2;
-  required string full_name = 3;
+  required string routingNumber = 1;
+  required string bankName = 2;
+  required string fullName = 3;
   required string swift = 4;
-  required string number_account = 5;
+  required string numberAccount = 5;
 
   enum Type {
     saving = 0;
@@ -24,11 +24,11 @@ message AmericanBankNotIdRequest {
 
 message AmericanBankRequest {
   required string id = 1; 
-  required string routing_number = 2;
-  required string bank_name = 3;
-  required string full_name = 4;
+  required string routingNumber = 2;
+  required string bankName = 3;
+  required string fullName = 4;
   required string swift = 5;
-  required string number_account = 6;
+  required string numberAccount = 6;
 
   enum Type {
     saving = 0;
@@ -46,11 +46,11 @@ message AmericanBanksTableRequest {
 }
 
 message AmericanBanksResponse {
-  required AmericanBankRequest american_banks = 1;
+  required AmericanBankRequest american = 1;
 }
 
 message AmericanBanksMultipleResponse {
-  repeated AmericanBankRequest currency = 1;
+  repeated AmericanBankRequest american = 1;
 }
 
 message AmericanBanksTableResponse {

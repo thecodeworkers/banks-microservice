@@ -1,1 +1,1 @@
-from .american_banks import Banks
+from .americanBanks import AmericanBanks

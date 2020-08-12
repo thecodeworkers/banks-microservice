@@ -7,7 +7,7 @@ dotenv_path = join(path, '.env')
 
 load_dotenv(dotenv_path)
 
-DATABASE_NAME = os.getenv('DATABASE_NAME', 'resources')
+DATABASE_NAME = os.getenv('DATABASE_NAME', 'banks')
 DATABASE_HOST = os.getenv('DATABASE_HOST', 'localhost')
 DATABASE_PORT = int(os.getenv('DATABASE_PORT', 27017))
 

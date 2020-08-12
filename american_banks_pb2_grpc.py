@@ -4,7 +4,6 @@ import grpc
 
 import american_banks_pb2 as american__banks__pb2
 
-
 class AmericanBanksStub(object):
     """Missing associated documentation comment in .proto file."""
 

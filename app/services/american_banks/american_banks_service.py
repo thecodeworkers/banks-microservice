@@ -1,6 +1,6 @@
 from google.protobuf.json_format import MessageToDict
 from mongoengine.queryset import NotUniqueError
-from ...protos import AmericanBanksServicer, AmericanBanksMultipleResponse, AmericanBanksResponse, AmericanBanksTableResponse, add_AmericanBanksServicer_to_server
+from ...protos import AmericanBanksServicer, AmericanBanksMultipleResponse, AmericanBanksResponse, AmericanBanksTableResponse, AmericanBankEmpty, add_AmericanBanksServicer_to_server
 from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate
 from ..bootstrap import grpc_server
 from ...models import AmericanBanks
@@ -62,7 +62,7 @@ class AmericanBanksService(AmericanBanksServicer):
         try:
             us_banks = AmericanBanks.objects.get(id=request.id)
             us_banks = us_banks.delete()
-            us_banks = AmericanBanksEmpty()
+            response = AmericanBankEmpty()
 
             return response
 

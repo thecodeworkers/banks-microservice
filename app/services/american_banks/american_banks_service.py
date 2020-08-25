@@ -38,7 +38,6 @@ class AmericanBanksService(AmericanBanksServicer):
             response = AmericanBanksResponse(american=us_banks)
 
             return response
-            return {}
 
         except NotUniqueError as e:
             exist_code(context, e)
@@ -52,7 +51,7 @@ class AmericanBanksService(AmericanBanksServicer):
 
             us_banks = AmericanBanks(**american_banks_object).save()
             us_banks = parser_one_object(us_banks)
-            us_banks = AmericanBanksResponse(american=us_banks)
+            response = AmericanBanksResponse(american=us_banks)
         
             return response
 

@@ -1,6 +1,6 @@
 from google.protobuf.json_format import MessageToDict
 from mongoengine.queryset import NotUniqueError
-from ...protos import AmericanBanksServicer, AmericanBanksMultipleResponse, AmericanBanksResponse, AmericanBanksTableResponse, add_AmericanBanksServicer_to_server, AmericanBankEmpty
+from ...protos import AmericanBanksServicer, AmericanBanksMultipleResponse, AmericanBanksResponse, AmericanBanksTableResponse, AmericanBankEmpty, add_AmericanBanksServicer_to_server
 from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate
 from ..bootstrap import grpc_server
 from ...models import AmericanBanks
@@ -38,7 +38,6 @@ class AmericanBanksService(AmericanBanksServicer):
             response = AmericanBanksResponse(american=us_banks)
 
             return response
-            return {}
 
         except NotUniqueError as e:
             exist_code(context, e)
@@ -52,9 +51,9 @@ class AmericanBanksService(AmericanBanksServicer):
 
             us_banks = AmericanBanks(**american_banks_object).save()
             us_banks = parser_one_object(us_banks)
-            us_banks = AmericanBanksResponse(american=us_banks)
+            response = AmericanBanksResponse(american=us_banks)
         
-            return us_banks
+            return response
 
         except NotUniqueError as e:
             exist_code(context, e)

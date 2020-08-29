@@ -1,0 +1,56 @@
+syntax = "proto2";
+
+message CreditCardEmpty {}
+
+message CreditCardIdRequest {
+  required string id = 1;
+}
+
+message CreditCardNotIdRequest {
+  required string cardNumber = 1;
+  required string username = 2;
+  required string cvc = 3;
+  optional string expiration = 5;
+  required string documentIdentification = 6;
+}
+
+message CreditCardRequest {
+  required string id = 1; 
+  required string cardNumber = 2;
+  required string username = 3;
+  required string cvc = 4;
+  optional string expiration = 5;
+  required string documentIdentification = 6;
+}
+
+message CreditCardTableRequest {
+  required int32 page = 1;
+  optional int32 per_page = 2 [default = 15];
+  optional string search = 3;
+}
+
+message CreditCardsResponse {
+  required CreditCardRequest credit = 1;
+}
+
+message CreditCardsMultipleResponse {
+  repeated CreditCardRequest credit = 1;
+}
+
+message CreditCardsTableResponse {
+  repeated CreditCardRequest items = 1;
+  required int32 page = 2;
+  required int32 per_page = 3;
+  required int32 total_items = 4;
+  required int32 num_pages = 5;
+}
+
+service CreditCards {
+  rpc table (CreditCardTableRequest) returns (CreditCardsTableResponse);
+  rpc get_all (CreditCardEmpty) returns (CreditCardsMultipleResponse);
+  rpc get (CreditCardNotIdRequest) returns (CreditCardsResponse);
+  rpc save (CreditCardNotIdRequest) returns (CreditCardsResponse);
+  rpc update (CreditCardRequest) returns (CreditCardsResponse);
+  rpc delete (CreditCardIdRequest) returns (CreditCardsResponse);
+}
+

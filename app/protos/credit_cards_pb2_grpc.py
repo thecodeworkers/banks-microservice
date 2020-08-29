@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-# import american_banks_pb2 as american__banks__pb2
-from ..protos import american_banks_pb2 as american__banks__pb2
+# import credit_cards_pb2 as credit__cards__pb2
+from ..protos import credit_cards_pb2 as credit__cards__pb2
 
-class AmericanBanksStub(object):
+class CreditCardsStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,38 +15,38 @@ class AmericanBanksStub(object):
             channel: A grpc.Channel.
         """
         self.table = channel.unary_unary(
-                '/AmericanBanks/table',
-                request_serializer=american__banks__pb2.AmericanBanksTableRequest.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksTableResponse.FromString,
+                '/CreditCards/table',
+                request_serializer=credit__cards__pb2.CreditCardTableRequest.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsTableResponse.FromString,
                 )
         self.get_all = channel.unary_unary(
-                '/AmericanBanks/get_all',
-                request_serializer=american__banks__pb2.AmericanBankEmpty.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksMultipleResponse.FromString,
+                '/CreditCards/get_all',
+                request_serializer=credit__cards__pb2.CreditCardEmpty.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsMultipleResponse.FromString,
                 )
         self.get = channel.unary_unary(
-                '/AmericanBanks/get',
-                request_serializer=american__banks__pb2.AmericanBankIdRequest.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksResponse.FromString,
+                '/CreditCards/get',
+                request_serializer=credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsResponse.FromString,
                 )
         self.save = channel.unary_unary(
-                '/AmericanBanks/save',
-                request_serializer=american__banks__pb2.AmericanBankNotIdRequest.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksResponse.FromString,
+                '/CreditCards/save',
+                request_serializer=credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsResponse.FromString,
                 )
         self.update = channel.unary_unary(
-                '/AmericanBanks/update',
-                request_serializer=american__banks__pb2.AmericanBankRequest.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksResponse.FromString,
+                '/CreditCards/update',
+                request_serializer=credit__cards__pb2.CreditCardRequest.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsResponse.FromString,
                 )
         self.delete = channel.unary_unary(
-                '/AmericanBanks/delete',
-                request_serializer=american__banks__pb2.AmericanBankIdRequest.SerializeToString,
-                response_deserializer=american__banks__pb2.AmericanBanksResponse.FromString,
+                '/CreditCards/delete',
+                request_serializer=credit__cards__pb2.CreditCardIdRequest.SerializeToString,
+                response_deserializer=credit__cards__pb2.CreditCardsResponse.FromString,
                 )
 
 
-class AmericanBanksServicer(object):
+class CreditCardsServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def table(self, request, context):
@@ -86,46 +86,46 @@ class AmericanBanksServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_AmericanBanksServicer_to_server(servicer, server):
+def add_CreditCardsServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'table': grpc.unary_unary_rpc_method_handler(
                     servicer.table,
-                    request_deserializer=american__banks__pb2.AmericanBanksTableRequest.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksTableResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardTableRequest.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsTableResponse.SerializeToString,
             ),
             'get_all': grpc.unary_unary_rpc_method_handler(
                     servicer.get_all,
-                    request_deserializer=american__banks__pb2.AmericanBankEmpty.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksMultipleResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardEmpty.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsMultipleResponse.SerializeToString,
             ),
             'get': grpc.unary_unary_rpc_method_handler(
                     servicer.get,
-                    request_deserializer=american__banks__pb2.AmericanBankIdRequest.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardNotIdRequest.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsResponse.SerializeToString,
             ),
             'save': grpc.unary_unary_rpc_method_handler(
                     servicer.save,
-                    request_deserializer=american__banks__pb2.AmericanBankNotIdRequest.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardNotIdRequest.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsResponse.SerializeToString,
             ),
             'update': grpc.unary_unary_rpc_method_handler(
                     servicer.update,
-                    request_deserializer=american__banks__pb2.AmericanBankRequest.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardRequest.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsResponse.SerializeToString,
             ),
             'delete': grpc.unary_unary_rpc_method_handler(
                     servicer.delete,
-                    request_deserializer=american__banks__pb2.AmericanBankIdRequest.FromString,
-                    response_serializer=american__banks__pb2.AmericanBanksResponse.SerializeToString,
+                    request_deserializer=credit__cards__pb2.CreditCardIdRequest.FromString,
+                    response_serializer=credit__cards__pb2.CreditCardsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'AmericanBanks', rpc_method_handlers)
+            'CreditCards', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class AmericanBanks(object):
+class CreditCards(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -138,9 +138,9 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/table',
-            american__banks__pb2.AmericanBanksTableRequest.SerializeToString,
-            american__banks__pb2.AmericanBanksTableResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/table',
+            credit__cards__pb2.CreditCardTableRequest.SerializeToString,
+            credit__cards__pb2.CreditCardsTableResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -154,9 +154,9 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/get_all',
-            american__banks__pb2.AmericanBankEmpty.SerializeToString,
-            american__banks__pb2.AmericanBanksMultipleResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/get_all',
+            credit__cards__pb2.CreditCardEmpty.SerializeToString,
+            credit__cards__pb2.CreditCardsMultipleResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -170,9 +170,9 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/get',
-            american__banks__pb2.AmericanBankIdRequest.SerializeToString,
-            american__banks__pb2.AmericanBanksResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/get',
+            credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+            credit__cards__pb2.CreditCardsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -186,9 +186,9 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/save',
-            american__banks__pb2.AmericanBankNotIdRequest.SerializeToString,
-            american__banks__pb2.AmericanBanksResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/save',
+            credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+            credit__cards__pb2.CreditCardsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -202,9 +202,9 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/update',
-            american__banks__pb2.AmericanBankRequest.SerializeToString,
-            american__banks__pb2.AmericanBanksResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/update',
+            credit__cards__pb2.CreditCardRequest.SerializeToString,
+            credit__cards__pb2.CreditCardsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -218,8 +218,8 @@ class AmericanBanks(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/AmericanBanks/delete',
-            american__banks__pb2.AmericanBankIdRequest.SerializeToString,
-            american__banks__pb2.AmericanBanksResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/CreditCards/delete',
+            credit__cards__pb2.CreditCardIdRequest.SerializeToString,
+            credit__cards__pb2.CreditCardsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

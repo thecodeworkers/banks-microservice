@@ -27,7 +27,7 @@ class CreditCardsService(CreditCardsServicer):
 
             return response
 
-        except AmericanBanks.DoesNotExist as e:
+        except CreditCards.DoesNotExist as e:
             not_exist_code(context, e)
 
     def save(self, request, context):
@@ -60,13 +60,13 @@ class CreditCardsService(CreditCardsServicer):
         
     def delete(self, request, context):
         try:
-            card_credit = AmericanBanks.objects.get(id=request.id)
-            us_banks = us_banks.delete()
-            response = AmericanBankEmpty()
+            card_credit = CreditCards.objects.get(id=request.id)
+            card_credit = card_credit.delete()
+            response = CreditCardEmpty()
 
             return response
 
-        except AmericanBanks.DoesNotExist as e:
+        except CreditCards.DoesNotExist as e:
             not_exist_code(context, e)
 
 def start_creditcards_service():

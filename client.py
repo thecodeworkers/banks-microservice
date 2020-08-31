@@ -1,20 +1,35 @@
 import grpc
-import credit_cards_pb2, credit_cards_pb2_grpc
+import european_banks_pb2, european_banks_pb2_grpc
 
 channel = grpc.insecure_channel('localhost:50053')
-stub = credit_cards_pb2_grpc.CreditCardsStub(channel)
+stub = european_banks_pb2_grpc.EuropeanBanksStub(channel)
 
 
-request = credit_cards_pb2.CreditCardNotIdRequest(
-    cardNumber = '123456789012345',
-    username = 'Giberson Lara',
-    cvc = '123',
-    expiration = '03/2020', 
-    documentIdentification = '123456789'
+request = european_banks_pb2.EuropeanBankIdRequest(
+    # cardNumber = '123456789012345',
+    # username = 'Kevin',
+    # cvc = '123',
+    # expiration = '03/2020', 
+    # documentIdentification = '123456789'
+
+    # bankName = 'banco bbva',
+    # fullName = 'Giber',
+    # swift = '123456789',
+    # iban = '1234',
+    # currency = 'euro',
+    # numberAccount = '123456789086432345',
+    # bankAddress = 'Barcelona, España',
+    # userAddress = 'Barcelona, España',
+    # type = 0,
+    # documentIdentification = '1234567890'
+
+    id = '5f4c3c4540f621b9a7478d27'
 )
 
-print(request)
-response = stub.save(request)
+
+response = stub.delete(request)
+
+print(response)
 
 # request_data = {
 #   'id':'5f457c547ee9792a16027368',

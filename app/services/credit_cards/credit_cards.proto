@@ -48,7 +48,7 @@ message CreditCardsTableResponse {
 service CreditCards {
   rpc table (CreditCardTableRequest) returns (CreditCardsTableResponse);
   rpc get_all (CreditCardEmpty) returns (CreditCardsMultipleResponse);
-  rpc get (CreditCardNotIdRequest) returns (CreditCardsResponse);
+  rpc get (CreditCardIdRequest) returns (CreditCardsResponse);
   rpc save (CreditCardNotIdRequest) returns (CreditCardsResponse);
   rpc update (CreditCardRequest) returns (CreditCardsResponse);
   rpc delete (CreditCardIdRequest) returns (CreditCardsResponse);

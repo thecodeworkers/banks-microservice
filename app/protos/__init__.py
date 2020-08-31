@@ -2,3 +2,5 @@ from .american_banks_pb2_grpc import AmericanBanksServicer, add_AmericanBanksSer
 from .american_banks_pb2 import AmericanBanksMultipleResponse, AmericanBanksResponse, AmericanBanksTableResponse, AmericanBankEmpty, AmericanBankNotIdRequest
 from .credit_cards_pb2_grpc import CreditCardsServicer, add_CreditCardsServicer_to_server
 from .credit_cards_pb2 import CreditCardsMultipleResponse, CreditCardsResponse, CreditCardsTableResponse, CreditCardEmpty, CreditCardNotIdRequest
+from .european_banks_pb2_grpc import EuropeanBanksServicer, add_EuropeanBanksServicer_to_server
+from .european_banks_pb2 import EuropeanBanksMultipleResponse, EuropeanBanksResponse, EuropeanBanksTableResponse, EuropeanBankEmpty, EuropeanBankNotIdRequest

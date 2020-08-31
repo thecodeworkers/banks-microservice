@@ -26,7 +26,7 @@ class CreditCardsStub(object):
                 )
         self.get = channel.unary_unary(
                 '/CreditCards/get',
-                request_serializer=credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+                request_serializer=credit__cards__pb2.CreditCardIdRequest.SerializeToString,
                 response_deserializer=credit__cards__pb2.CreditCardsResponse.FromString,
                 )
         self.save = channel.unary_unary(
@@ -100,7 +100,7 @@ def add_CreditCardsServicer_to_server(servicer, server):
             ),
             'get': grpc.unary_unary_rpc_method_handler(
                     servicer.get,
-                    request_deserializer=credit__cards__pb2.CreditCardNotIdRequest.FromString,
+                    request_deserializer=credit__cards__pb2.CreditCardIdRequest.FromString,
                     response_serializer=credit__cards__pb2.CreditCardsResponse.SerializeToString,
             ),
             'save': grpc.unary_unary_rpc_method_handler(
@@ -171,7 +171,7 @@ class CreditCards(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/CreditCards/get',
-            credit__cards__pb2.CreditCardNotIdRequest.SerializeToString,
+            credit__cards__pb2.CreditCardIdRequest.SerializeToString,
             credit__cards__pb2.CreditCardsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

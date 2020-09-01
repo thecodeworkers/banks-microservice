@@ -1,20 +1,25 @@
 import grpc
-import european_banks_pb2, european_banks_pb2_grpc
+import latinamerican_banks_pb2, latinamerican_banks_pb2_grpc
 
 channel = grpc.insecure_channel('localhost:50053')
-stub = european_banks_pb2_grpc.EuropeanBanksStub(channel)
+stub = latinamerican_banks_pb2_grpc.LatinAmericanBanksStub(channel)
 
 
-request = european_banks_pb2.EuropeanBankIdRequest(
+request = latinamerican_banks_pb2.LatinAmericanBankIdRequest(
     # cardNumber = '123456789012345',
     # username = 'Kevin',
     # cvc = '123',
     # expiration = '03/2020', 
     # documentIdentification = '123456789'
-
-    # bankName = 'banco bbva',
-    # fullName = 'Giber',
-    # swift = '123456789',
+    id = '5f4dd46f805377a7c3620330',
+    # bankName = 'Banco Mercantil',
+    # swift = 'ASDERGHUXXX',
+    # country = 'Venezuela'
+    # # fullName = 'Giber',
+    # swift = 'ABCDEFDHIJ',
+    # country = 'España',
+    # iban = ''
+    # iban = '123'
     # iban = '1234',
     # currency = 'euro',
     # numberAccount = '123456789086432345',
@@ -22,11 +27,10 @@ request = european_banks_pb2.EuropeanBankIdRequest(
     # userAddress = 'Barcelona, España',
     # type = 0,
     # documentIdentification = '1234567890'
-
-    id = '5f4c3c4540f621b9a7478d27'
+    # id = '5f4c3c4540f621b9a7478d27'
 )
 
-
+print(request)
 response = stub.delete(request)
 
 print(response)

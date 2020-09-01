@@ -8,41 +8,17 @@ message EuropeanBankIdRequest {
 
 message EuropeanBankNotIdRequest {
   required string bankName = 1;
-  required string fullName = 2;
-  required string swift = 3;
-  required string iban = 4;
-  optional string currency = 5;
-  required string numberAccount = 6;
-
-  enum Type {
-    saving = 0;
-    current = 1;
-  }
-
-  required Type type = 7;
-  required string bankAddress = 8;
-  required string userAddress = 9;  
-  required string documentIdentification = 10;
+  required string swift = 2;
+  required string iban = 3;
+  required string country = 4;
 }
 
 message EuropeanBankRequest {
   required string id = 1; 
   required string bankName = 2;
-  required string fullName = 3;
-  required string swift = 4;
-  required string iban = 5;
-  optional string currency = 6;
-  required string numberAccount = 7;
-
-  enum Type {
-    saving = 0;
-    current = 1;
-  }
-
-  required Type type = 8;
-  required string bankAddress = 9;
-  required string userAddress = 10;  
-  required string documentIdentification = 11;
+  required string swift = 3;
+  required string iban = 4;
+  required string country = 5;
 }
 
 message EuropeanBanksTableRequest {

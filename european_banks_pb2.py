@@ -19,60 +19,10 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto2',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x14\x65uropean_banks.proto\"\x13\n\x11\x45uropeanBankEmpty\"#\n\x15\x45uropeanBankIdRequest\x12\n\n\x02id\x18\x01 \x02(\t\"\x9d\x02\n\x18\x45uropeanBankNotIdRequest\x12\x10\n\x08\x62\x61nkName\x18\x01 \x02(\t\x12\x10\n\x08\x66ullName\x18\x02 \x02(\t\x12\r\n\x05swift\x18\x03 \x02(\t\x12\x0c\n\x04iban\x18\x04 \x02(\t\x12\x10\n\x08\x63urrency\x18\x05 \x01(\t\x12\x15\n\rnumberAccount\x18\x06 \x02(\t\x12,\n\x04type\x18\x07 \x02(\x0e\x32\x1e.EuropeanBankNotIdRequest.Type\x12\x13\n\x0b\x62\x61nkAddress\x18\x08 \x02(\t\x12\x13\n\x0buserAddress\x18\t \x02(\t\x12\x1e\n\x16\x64ocumentIdentification\x18\n \x02(\t\"\x1f\n\x04Type\x12\n\n\x06saving\x10\x00\x12\x0b\n\x07\x63urrent\x10\x01\"\x9f\x02\n\x13\x45uropeanBankRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x10\n\x08\x62\x61nkName\x18\x02 \x02(\t\x12\x10\n\x08\x66ullName\x18\x03 \x02(\t\x12\r\n\x05swift\x18\x04 \x02(\t\x12\x0c\n\x04iban\x18\x05 \x02(\t\x12\x10\n\x08\x63urrency\x18\x06 \x01(\t\x12\x15\n\rnumberAccount\x18\x07 \x02(\t\x12\'\n\x04type\x18\x08 \x02(\x0e\x32\x19.EuropeanBankRequest.Type\x12\x13\n\x0b\x62\x61nkAddress\x18\t \x02(\t\x12\x13\n\x0buserAddress\x18\n \x02(\t\x12\x1e\n\x16\x64ocumentIdentification\x18\x0b \x02(\t\"\x1f\n\x04Type\x12\n\n\x06saving\x10\x00\x12\x0b\n\x07\x63urrent\x10\x01\"O\n\x19\x45uropeanBanksTableRequest\x12\x0c\n\x04page\x18\x01 \x02(\x05\x12\x14\n\x08per_page\x18\x02 \x01(\x05:\x02\x31\x35\x12\x0e\n\x06search\x18\x03 \x01(\t\"?\n\x15\x45uropeanBanksResponse\x12&\n\x08\x65uropean\x18\x01 \x02(\x0b\x32\x14.EuropeanBankRequest\"G\n\x1d\x45uropeanBanksMultipleResponse\x12&\n\x08\x65uropean\x18\x01 \x03(\x0b\x32\x14.EuropeanBankRequest\"\x89\x01\n\x1a\x45uropeanBanksTableResponse\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.EuropeanBankRequest\x12\x0c\n\x04page\x18\x02 \x02(\x05\x12\x10\n\x08per_page\x18\x03 \x02(\x05\x12\x13\n\x0btotal_items\x18\x04 \x02(\x05\x12\x11\n\tnum_pages\x18\x05 \x02(\x05\x32\xf4\x02\n\rEuropeanBanks\x12@\n\x05table\x12\x1a.EuropeanBanksTableRequest\x1a\x1b.EuropeanBanksTableResponse\x12=\n\x07get_all\x12\x12.EuropeanBankEmpty\x1a\x1e.EuropeanBanksMultipleResponse\x12\x35\n\x03get\x12\x16.EuropeanBankIdRequest\x1a\x16.EuropeanBanksResponse\x12\x39\n\x04save\x12\x19.EuropeanBankNotIdRequest\x1a\x16.EuropeanBanksResponse\x12\x36\n\x06update\x12\x14.EuropeanBankRequest\x1a\x16.EuropeanBanksResponse\x12\x38\n\x06\x64\x65lete\x12\x16.EuropeanBankIdRequest\x1a\x16.EuropeanBanksResponse'
+  serialized_pb=b'\n\x14\x65uropean_banks.proto\"\x13\n\x11\x45uropeanBankEmpty\"#\n\x15\x45uropeanBankIdRequest\x12\n\n\x02id\x18\x01 \x02(\t\"Z\n\x18\x45uropeanBankNotIdRequest\x12\x10\n\x08\x62\x61nkName\x18\x01 \x02(\t\x12\r\n\x05swift\x18\x02 \x02(\t\x12\x0c\n\x04iban\x18\x03 \x02(\t\x12\x0f\n\x07\x63ountry\x18\x04 \x02(\t\"a\n\x13\x45uropeanBankRequest\x12\n\n\x02id\x18\x01 \x02(\t\x12\x10\n\x08\x62\x61nkName\x18\x02 \x02(\t\x12\r\n\x05swift\x18\x03 \x02(\t\x12\x0c\n\x04iban\x18\x04 \x02(\t\x12\x0f\n\x07\x63ountry\x18\x05 \x02(\t\"O\n\x19\x45uropeanBanksTableRequest\x12\x0c\n\x04page\x18\x01 \x02(\x05\x12\x14\n\x08per_page\x18\x02 \x01(\x05:\x02\x31\x35\x12\x0e\n\x06search\x18\x03 \x01(\t\"?\n\x15\x45uropeanBanksResponse\x12&\n\x08\x65uropean\x18\x01 \x02(\x0b\x32\x14.EuropeanBankRequest\"G\n\x1d\x45uropeanBanksMultipleResponse\x12&\n\x08\x65uropean\x18\x01 \x03(\x0b\x32\x14.EuropeanBankRequest\"\x89\x01\n\x1a\x45uropeanBanksTableResponse\x12#\n\x05items\x18\x01 \x03(\x0b\x32\x14.EuropeanBankRequest\x12\x0c\n\x04page\x18\x02 \x02(\x05\x12\x10\n\x08per_page\x18\x03 \x02(\x05\x12\x13\n\x0btotal_items\x18\x04 \x02(\x05\x12\x11\n\tnum_pages\x18\x05 \x02(\x05\x32\xf4\x02\n\rEuropeanBanks\x12@\n\x05table\x12\x1a.EuropeanBanksTableRequest\x1a\x1b.EuropeanBanksTableResponse\x12=\n\x07get_all\x12\x12.EuropeanBankEmpty\x1a\x1e.EuropeanBanksMultipleResponse\x12\x35\n\x03get\x12\x16.EuropeanBankIdRequest\x1a\x16.EuropeanBanksResponse\x12\x39\n\x04save\x12\x19.EuropeanBankNotIdRequest\x1a\x16.EuropeanBanksResponse\x12\x36\n\x06update\x12\x14.EuropeanBankRequest\x1a\x16.EuropeanBanksResponse\x12\x38\n\x06\x64\x65lete\x12\x16.EuropeanBankIdRequest\x1a\x16.EuropeanBanksResponse'
 )
 
 
-
-_EUROPEANBANKNOTIDREQUEST_TYPE = _descriptor.EnumDescriptor(
-  name='Type',
-  full_name='EuropeanBankNotIdRequest.Type',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='saving', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='current', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=337,
-  serialized_end=368,
-)
-_sym_db.RegisterEnumDescriptor(_EUROPEANBANKNOTIDREQUEST_TYPE)
-
-_EUROPEANBANKREQUEST_TYPE = _descriptor.EnumDescriptor(
-  name='Type',
-  full_name='EuropeanBankRequest.Type',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='saving', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='current', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=337,
-  serialized_end=368,
-)
-_sym_db.RegisterEnumDescriptor(_EUROPEANBANKREQUEST_TYPE)
 
 
 _EUROPEANBANKEMPTY = _descriptor.Descriptor(
@@ -148,64 +98,22 @@ _EUROPEANBANKNOTIDREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='fullName', full_name='EuropeanBankNotIdRequest.fullName', index=1,
+      name='swift', full_name='EuropeanBankNotIdRequest.swift', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='swift', full_name='EuropeanBankNotIdRequest.swift', index=2,
+      name='iban', full_name='EuropeanBankNotIdRequest.iban', index=2,
       number=3, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='iban', full_name='EuropeanBankNotIdRequest.iban', index=3,
+      name='country', full_name='EuropeanBankNotIdRequest.country', index=3,
       number=4, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='currency', full_name='EuropeanBankNotIdRequest.currency', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='numberAccount', full_name='EuropeanBankNotIdRequest.numberAccount', index=5,
-      number=6, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='type', full_name='EuropeanBankNotIdRequest.type', index=6,
-      number=7, type=14, cpp_type=8, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='bankAddress', full_name='EuropeanBankNotIdRequest.bankAddress', index=7,
-      number=8, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='userAddress', full_name='EuropeanBankNotIdRequest.userAddress', index=8,
-      number=9, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='documentIdentification', full_name='EuropeanBankNotIdRequest.documentIdentification', index=9,
-      number=10, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -215,7 +123,6 @@ _EUROPEANBANKNOTIDREQUEST = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _EUROPEANBANKNOTIDREQUEST_TYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -223,8 +130,8 @@ _EUROPEANBANKNOTIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=83,
-  serialized_end=368,
+  serialized_start=82,
+  serialized_end=172,
 )
 
 
@@ -251,64 +158,22 @@ _EUROPEANBANKREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='fullName', full_name='EuropeanBankRequest.fullName', index=2,
+      name='swift', full_name='EuropeanBankRequest.swift', index=2,
       number=3, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='swift', full_name='EuropeanBankRequest.swift', index=3,
+      name='iban', full_name='EuropeanBankRequest.iban', index=3,
       number=4, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='iban', full_name='EuropeanBankRequest.iban', index=4,
+      name='country', full_name='EuropeanBankRequest.country', index=4,
       number=5, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='currency', full_name='EuropeanBankRequest.currency', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='numberAccount', full_name='EuropeanBankRequest.numberAccount', index=6,
-      number=7, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='type', full_name='EuropeanBankRequest.type', index=7,
-      number=8, type=14, cpp_type=8, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='bankAddress', full_name='EuropeanBankRequest.bankAddress', index=8,
-      number=9, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='userAddress', full_name='EuropeanBankRequest.userAddress', index=9,
-      number=10, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='documentIdentification', full_name='EuropeanBankRequest.documentIdentification', index=10,
-      number=11, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -318,7 +183,6 @@ _EUROPEANBANKREQUEST = _descriptor.Descriptor(
   ],
   nested_types=[],
   enum_types=[
-    _EUROPEANBANKREQUEST_TYPE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -326,8 +190,8 @@ _EUROPEANBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=371,
-  serialized_end=658,
+  serialized_start=174,
+  serialized_end=271,
 )
 
 
@@ -372,8 +236,8 @@ _EUROPEANBANKSTABLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=660,
-  serialized_end=739,
+  serialized_start=273,
+  serialized_end=352,
 )
 
 
@@ -404,8 +268,8 @@ _EUROPEANBANKSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=741,
-  serialized_end=804,
+  serialized_start=354,
+  serialized_end=417,
 )
 
 
@@ -436,8 +300,8 @@ _EUROPEANBANKSMULTIPLERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=806,
-  serialized_end=877,
+  serialized_start=419,
+  serialized_end=490,
 )
 
 
@@ -496,14 +360,10 @@ _EUROPEANBANKSTABLERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=880,
-  serialized_end=1017,
+  serialized_start=493,
+  serialized_end=630,
 )
 
-_EUROPEANBANKNOTIDREQUEST.fields_by_name['type'].enum_type = _EUROPEANBANKNOTIDREQUEST_TYPE
-_EUROPEANBANKNOTIDREQUEST_TYPE.containing_type = _EUROPEANBANKNOTIDREQUEST
-_EUROPEANBANKREQUEST.fields_by_name['type'].enum_type = _EUROPEANBANKREQUEST_TYPE
-_EUROPEANBANKREQUEST_TYPE.containing_type = _EUROPEANBANKREQUEST
 _EUROPEANBANKSRESPONSE.fields_by_name['european'].message_type = _EUROPEANBANKREQUEST
 _EUROPEANBANKSMULTIPLERESPONSE.fields_by_name['european'].message_type = _EUROPEANBANKREQUEST
 _EUROPEANBANKSTABLERESPONSE.fields_by_name['items'].message_type = _EUROPEANBANKREQUEST
@@ -582,8 +442,8 @@ _EUROPEANBANKS = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1020,
-  serialized_end=1392,
+  serialized_start=633,
+  serialized_end=1005,
   methods=[
   _descriptor.MethodDescriptor(
     name='table',

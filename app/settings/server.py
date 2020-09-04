@@ -34,19 +34,19 @@ class Server():
         try:
             if self.__secure_server == 'False': 
                 grpc_server.add_insecure_port(HOST)
-                print("The server was unsecure")
+                # print("The server was unsecure")
 
             if self.__secure_server == 'True':
                 credentials = self.__set_private_keys()
                 grpc_server.add_secure_port(HOST, credentials)
-                print("The server was secure")
+                # print("The server was secure")
 
             grpc_server.start()
-            print(f'Starting server. Listening on {HOST}')
+            # print(f'Starting server. Listening on {HOST}')
             self.__loop_server()
 
         except Exception as error:
-            print(error)
+            # print(error)
     
     def __determinate_loop(self):
         status = service_bus.status()

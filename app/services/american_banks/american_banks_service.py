@@ -44,6 +44,7 @@ class AmericanBanksService(AmericanBanksServicer):
         try:
             metadata = dict(context.invocation_metadata())
             is_auth(metadata['auth_token'], '04_american_banks_save')
+            
             american_banks_object = MessageToDict(request)
             us_banks = AmericanBanks(**american_banks_object).save()
             us_banks = parser_one_object(us_banks)

@@ -9,7 +9,6 @@ class Server():
     def __init__(self):
         self.connection = None
         self.__secure_server = SECURE_SERVER
-        self.__up_servicebus = 0
 
     def start_server(self):
         start_all_servicers()
@@ -52,7 +51,6 @@ class Server():
         status = service_bus.status()
 
         if status:
-            self.__up_servicebus = 1
             service_bus.start()
         else:
             while True:
@@ -64,9 +62,6 @@ class Server():
 
         except KeyboardInterrupt:
             grpc_server.stop(0)
-            
-            if self.__up_servicebus:
-                service_bus.stop()
-                service_bus.close_connection()
-
+            service_bus.stop()
+            service_bus.close_connection()
             self.connection.close_connection()

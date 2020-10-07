@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+message AmericanBankEmpty {}
+
+message AmericanBankIdRequest {
+  required string id = 1;
+}
+
+message AmericanBankNotIdRequest {
+  required string routingNumber = 1;
+  required string bankName = 2;
+  required string swift = 3;
+}
+
+message AmericanBankRequest {
+  required string id = 1; 
+  required string routingNumber = 2;
+  required string bankName = 3;
+  required string swift = 4;
+}
+
+message AmericanBanksTableRequest {
+  required int32 page = 1;
+  optional int32 per_page = 2 [default = 15];
+  optional string search = 3;
+}
+
+message AmericanBanksResponse {
+  required AmericanBankRequest american = 1;
+}
+
+message AmericanBanksMultipleResponse {
+  repeated AmericanBankRequest american = 1;
+}
+
+message AmericanBanksTableResponse {
+  repeated AmericanBankRequest items = 1;
+  required int32 page = 2;
+  required int32 per_page = 3;
+  required int32 total_items = 4;
+  required int32 num_pages = 5;
+}
+
+
+service AmericanBanks {
+  rpc table (AmericanBanksTableRequest) returns (AmericanBanksTableResponse);
+  rpc get_all (AmericanBankEmpty) returns (AmericanBanksMultipleResponse);
+  rpc get (AmericanBankIdRequest) returns (AmericanBanksResponse);
+  rpc save (AmericanBankNotIdRequest) returns (AmericanBanksResponse);
+  rpc update (AmericanBankRequest) returns (AmericanBanksResponse);
+  rpc delete (AmericanBankIdRequest) returns (AmericanBanksResponse);
+}
+

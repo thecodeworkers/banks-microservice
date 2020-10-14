@@ -9,16 +9,16 @@ from ...models import LatinAmericanBanks
 class LatinAmericanBanksService(LatinAmericanBanksServicer):
     def table(self, request, context):
         auth_token = parser_context(context, 'auth_token')
-        is_auth(auth_token, '04_latin_american_banks_table')
+        is_auth(auth_token, '04_latinamerican_banks_table')
         latin_banks = LatinAmericanBanks.objects
         latin_banks = paginate(latin_banks, request.page)
         response = LatinAmericanBanksTableResponse(**response)
-        
+
         return response
 
     def get_all(self, request, context):
         auth_token = parser_context(context, 'auth_token')
-        is_auth(auth_token, '04_latin_american_banks_get_all')
+        is_auth(auth_token, '04_latinamerican_banks_get_all')
         latin_banks = parser_all_object(LatinAmericanBanks.objects.all())
         response = LatinAmericanBanksMultipleResponse(latin=latin_banks)
 
@@ -27,7 +27,7 @@ class LatinAmericanBanksService(LatinAmericanBanksServicer):
     def get(self, request, context):
         try:
             auth_token = parser_context(context, 'auth_token')
-            is_auth(auth_token, '04_latin_american_banks_get')
+            is_auth(auth_token, '04_latinamerican_banks_get')
             latin_banks = LatinAmericanBanks.objects.get(id=request.id)
             latin_banks = parser_one_object(latin_banks)
             response = LatinAmericanBanksResponse(latin=latin_banks)
@@ -40,7 +40,7 @@ class LatinAmericanBanksService(LatinAmericanBanksServicer):
     def save(self, request, context):
         try:
             auth_token = parser_context(context, 'auth_token')
-            is_auth(auth_token, '04_latin_american_banks_save')
+            is_auth(auth_token, '04_latinamerican_banks_save')
             latinamerican_banks_object = MessageToDict(request)
             latin_banks = LatinAmericanBanks(**latinamerican_banks_object).save()
             latin_banks = parser_one_object(latin_banks)
@@ -54,7 +54,7 @@ class LatinAmericanBanksService(LatinAmericanBanksServicer):
     def update(self, request, context):
         try:
             auth_token = parser_context(context, 'auth_token')
-            is_auth(auth_token, '04_latin_american_banks_update')
+            is_auth(auth_token, '04_latinamerican_banks_update')
             latinamerican_banks_object = MessageToDict(request)
             latin_banks = LatinAmericanBanks.objects(id=latinamerican_banks_object['id'])
 
@@ -63,16 +63,16 @@ class LatinAmericanBanksService(LatinAmericanBanksServicer):
             latin_banks = LatinAmericanBanks(**latinamerican_banks_object).save()
             latin_banks = parser_one_object(latin_banks)
             response = LatinAmericanBanksResponse(latin=latin_banks)
-        
+
             return response
 
         except NotUniqueError as e:
             exist_code(context, e)
-        
+
     def delete(self, request, context):
         try:
             auth_token = parser_context(context, 'auth_token')
-            is_auth(auth_token, '04_latin_american_banks_delete')
+            is_auth(auth_token, '04_latinamerican_banks_delete')
             latin_banks = LatinAmericanBanks.objects.get(id=request.id)
             latin_banks = latin_banks.delete()
             response = LatinAmericanBankEmpty()

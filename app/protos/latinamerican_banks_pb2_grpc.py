@@ -2,8 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-# import latinamerican_banks_pb2 as latinamerican__banks__pb2
-from ..protos import latinamerican_banks_pb2 as latinamerican__banks__pb2
+from app.protos import latinamerican_banks_pb2 as latinamerican__banks__pb2
 
 
 class LatinAmericanBanksStub(object):

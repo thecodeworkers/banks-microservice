@@ -13,7 +13,7 @@ message AmericanBankNotIdRequest {
 }
 
 message AmericanBankRequest {
-  required string id = 1; 
+  required string id = 1;
   required string routingNumber = 2;
   required string bankName = 3;
   required string swift = 4;
@@ -50,4 +50,3 @@ service AmericanBanks {
   rpc update (AmericanBankRequest) returns (AmericanBanksResponse);
   rpc delete (AmericanBankIdRequest) returns (AmericanBanksResponse);
 }
-

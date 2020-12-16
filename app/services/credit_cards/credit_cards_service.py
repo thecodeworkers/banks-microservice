@@ -4,6 +4,7 @@ from ...protos import CreditCardsServicer, CreditCardsMultipleResponse, CreditCa
 from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context
 from ...utils.validate_session import is_auth
 from ..bootstrap import grpc_server
+from bson.objectid import ObjectId
 from ...models import CreditCards
 
 class CreditCardsService(CreditCardsServicer):
@@ -11,7 +12,18 @@ class CreditCardsService(CreditCardsServicer):
         auth_token = parser_context(context, 'auth_token')
         is_auth(auth_token, '04_credit_cards_table')
         card_credit = CreditCards.objects
-        card_credit = paginate(card_credit, request.page)
+
+        if request.search:
+            card_credit = CreditCards.objects(__raw__={'$or': [
+                {'entity': request.search},
+                {'cvcValidation':  int(request.search) if request.search.isdigit() else request.search},
+                {'numberValidation':  int(request.search) if request.search.isdigit() else request.search},
+                {'regex': request.search},
+                {'_id': ObjectId(request.search) if ObjectId.is_valid(
+                    request.search) else request.search}
+            ]})
+
+        response = paginate(card_credit, request.page)
         response = CreditCardsTableResponse(**response)
         
         return response

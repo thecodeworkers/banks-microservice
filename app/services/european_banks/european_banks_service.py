@@ -4,6 +4,7 @@ from ...protos import EuropeanBanksServicer, EuropeanBanksMultipleResponse, Euro
 from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context
 from ...utils.validate_session import is_auth
 from ..bootstrap import grpc_server
+from bson.objectid import ObjectId
 from ...models import EuropeanBanks
 
 class EuropeanBanksService(EuropeanBanksServicer):
@@ -11,7 +12,18 @@ class EuropeanBanksService(EuropeanBanksServicer):
         auth_token = parser_context(context, 'auth_token')
         is_auth(auth_token, '04_european_banks_table')
         eu_banks = EuropeanBanks.objects
-        eu_banks = paginate(eu_banks, request.page)
+
+        if request.search:
+            eu_banks = EuropeanBanks.objects(__raw__={'$or': [
+                {'bankName': request.search},
+                {'iban':  request.search},
+                {'country':  request.search},
+                {'swift': request.search},
+                {'_id': ObjectId(request.search) if ObjectId.is_valid(
+                    request.search) else request.search}
+            ]})
+
+        response = paginate(eu_banks, request.page)
         response = EuropeanBanksTableResponse(**response)
         
         return response

@@ -1,7 +1,7 @@
 from google.protobuf.json_format import MessageToDict
 from mongoengine.queryset import NotUniqueError
 from ...protos import EuropeanBanksServicer, EuropeanBanksMultipleResponse, EuropeanBanksResponse, EuropeanBanksTableResponse, EuropeanBankEmpty, add_EuropeanBanksServicer_to_server
-from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context
+from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context, pagination, default_paginate_schema
 from ...utils.validate_session import is_auth
 from ..bootstrap import grpc_server
 from bson.objectid import ObjectId
@@ -11,20 +11,42 @@ class EuropeanBanksService(EuropeanBanksServicer):
     def table(self, request, context):
         auth_token = parser_context(context, 'auth_token')
         is_auth(auth_token, '04_european_banks_table')
-        eu_banks = EuropeanBanks.objects
 
-        if request.search:
-            eu_banks = EuropeanBanks.objects(__raw__={'$or': [
-                {'bankName': request.search},
-                {'iban':  request.search},
-                {'country':  request.search},
-                {'swift': request.search},
-                {'_id': ObjectId(request.search) if ObjectId.is_valid(
-                    request.search) else request.search}
-            ]})
+        search = request.search
 
-        response = paginate(eu_banks, request.page)
-        response = EuropeanBanksTableResponse(**response)
+        pipeline = [
+            {
+                "$match": {
+                    "$or": [
+                        {"bankName": {"$regex": search, "$options": "i"}},
+                        {"iban": {"$regex": search, "$options": "i"}},
+                        {"country": {"$regex": search, "$options": "i"}},
+                        {"swift": {"$regex": search, "$options": "i"}},
+                    ]
+                }
+            },
+            {
+                "$group": {
+                    "_id": "$_id",
+                    "id": {"$first": {"$toString": "$_id"}},
+                    "bankName": {"$first": "$bankName"},
+                    "iban": {"$first": "$iban"},
+                    "country": {"$first": "$country"},
+                    "swift": {"$first": "$swift"},
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0
+                }
+            }
+        ]
+
+        pipeline = pipeline + pagination(request.page, request.per_page, {"bankName": 1})
+
+        response = EuropeanBanks.objects().aggregate(pipeline)
+
+        response = EuropeanBanksTableResponse(**default_paginate_schema(response, request.page, request.per_page))
         
         return response
 

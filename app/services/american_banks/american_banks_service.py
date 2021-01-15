@@ -4,6 +4,7 @@ from ...protos import AmericanBanksServicer, AmericanBanksMultipleResponse, Amer
 from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context
 from ...utils.validate_session import is_auth
 from ..bootstrap import grpc_server
+from bson.objectid import ObjectId
 from ...models import AmericanBanks
 
 class AmericanBanksService(AmericanBanksServicer):
@@ -13,7 +14,17 @@ class AmericanBanksService(AmericanBanksServicer):
         is_auth(auth_token, '04_american_banks_table')
 
         us_banks = AmericanBanks.objects
-        us_banks = paginate(us_banks, request.page)
+
+        if request.search:
+            us_banks = AmericanBanks.objects(__raw__={'$or': [
+                {'bankName': request.search},
+                {'routingNumber':  request.search},
+                {'swift': request.search},
+                {'_id': ObjectId(request.search) if ObjectId.is_valid(
+                    request.search) else request.search}
+            ]})
+            
+        response = paginate(us_banks, request.page)
         response = AmericanBanksTableResponse(**response)
         
         return response

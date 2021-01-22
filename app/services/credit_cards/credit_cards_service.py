@@ -1,7 +1,7 @@
 from google.protobuf.json_format import MessageToDict
 from mongoengine.queryset import NotUniqueError
 from ...protos import CreditCardsServicer, CreditCardsMultipleResponse, CreditCardsResponse, CreditCardsTableResponse, CreditCardEmpty, add_CreditCardsServicer_to_server
-from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context
+from ...utils import parser_all_object, parser_one_object, not_exist_code, exist_code, paginate, parser_context, pagination, default_paginate_schema
 from ...utils.validate_session import is_auth
 from ..bootstrap import grpc_server
 from bson.objectid import ObjectId
@@ -9,22 +9,40 @@ from ...models import CreditCards
 
 class CreditCardsService(CreditCardsServicer):
     def table(self, request, context):
+
         auth_token = parser_context(context, 'auth_token')
         is_auth(auth_token, '04_credit_cards_table')
-        card_credit = CreditCards.objects
 
-        if request.search:
-            card_credit = CreditCards.objects(__raw__={'$or': [
-                {'entity': request.search},
-                {'cvcValidation':  int(request.search) if request.search.isdigit() else request.search},
-                {'numberValidation':  int(request.search) if request.search.isdigit() else request.search},
-                {'regex': request.search},
-                {'_id': ObjectId(request.search) if ObjectId.is_valid(
-                    request.search) else request.search}
-            ]})
+        search = request.search
 
-        response = paginate(card_credit, request.page)
-        response = CreditCardsTableResponse(**response)
+        pipeline = [
+            {
+                "$match": {
+                    "$or": [
+                        {"entity": {"$regex": search, "$options": "i"}},
+                        {"cvcValidation": {"$regex": search, "$options": "i"}},
+                        {"numberValidation": {"$regex": search, "$options": "i"}},
+                        {"regex": {"$regex": search, "$options": "i"}},
+                    ]
+                }
+            },
+            {
+                "$set": {
+                    "id": {"$toString": "$_id"}
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0
+                }
+            }
+        ]
+
+        pipeline = pipeline + pagination(request.page, request.per_page, {"entity": 1})
+
+        response = CreditCards.objects().aggregate(pipeline)
+
+        response = CreditCardsTableResponse(**default_paginate_schema(response, request.page, request.per_page))
         
         return response
 

@@ -26,13 +26,8 @@ class EuropeanBanksService(EuropeanBanksServicer):
                 }
             },
             {
-                "$group": {
-                    "_id": "$_id",
-                    "id": {"$first": {"$toString": "$_id"}},
-                    "bankName": {"$first": "$bankName"},
-                    "iban": {"$first": "$iban"},
-                    "country": {"$first": "$country"},
-                    "swift": {"$first": "$swift"},
+                "$set": {
+                    "id": {"$toString": "$_id"}
                 }
             },
             {

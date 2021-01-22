@@ -27,13 +27,8 @@ class CreditCardsService(CreditCardsServicer):
                 }
             },
             {
-                "$group": {
-                    "_id": "$_id",
-                    "id": {"$first": {"$toString": "$_id"}},
-                    "entity": {"$first": "$entity"},
-                    "cvcValidation": {"$first": "$cvcValidation"},
-                    "numberValidation": {"$first": "$numberValidation"},
-                    "regex": {"$first": "$regex"},
+                "$set": {
+                    "id": {"$toString": "$_id"}
                 }
             },
             {

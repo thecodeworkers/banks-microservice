@@ -25,12 +25,8 @@ class LatinAmericanBanksService(LatinAmericanBanksServicer):
                 }
             },
             {
-                "$group": {
-                    "_id": "$_id",
-                    "id": {"$first": {"$toString": "$_id"}},
-                    "bankName": {"$first": "$bankName"},
-                    "country": {"$first": "$country"},
-                    "swift": {"$first": "$swift"},
+                "$set": {
+                    "id": {"$toString": "$_id"}
                 }
             },
             {

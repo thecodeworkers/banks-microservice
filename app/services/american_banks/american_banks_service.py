@@ -26,12 +26,8 @@ class AmericanBanksService(AmericanBanksServicer):
                 }
             },
             {
-                "$group": {
-                    "_id": "$_id",
-                    "id": {"$first": {"$toString": "$_id"}},
-                    "bankName": {"$first": "$bankName"},
-                    "routingNumber": {"$first": "$routingNumber"},
-                    "swift": {"$first": "$swift"},
+                "$set": {
+                    "id": {"$toString": "$_id"}
                 }
             },
             {
